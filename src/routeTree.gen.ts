@@ -10,13 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiUserRouteImport } from './routes/api/user'
+import { Route as ApiSearchRouteImport } from './routes/api/search'
+import { Route as ApiReportRouteImport } from './routes/api/report'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
+import { Route as ApiFavoriteRouteImport } from './routes/api/favorite'
+import { Route as ApiCompareRouteImport } from './routes/api/compare'
+import { Route as ApiWebsiteDomainRouteImport } from './routes/api/website.$domain'
+import { Route as ApiUserReportsRouteImport } from './routes/api/user/reports'
+import { Route as ApiUserHistoryRouteImport } from './routes/api/user/history'
+import { Route as ApiUserFavoritesRouteImport } from './routes/api/user/favorites'
+import { Route as ApiTimelineDomainRouteImport } from './routes/api/timeline.$domain'
+import { Route as ApiSnapshotsDomainRouteImport } from './routes/api/snapshots.$domain'
 import { Route as ApiPublicWaybackRouteImport } from './routes/api/public/wayback'
 import { Route as ApiPublicRecentRouteImport } from './routes/api/public/recent'
 import { Route as ApiPublicInsightRouteImport } from './routes/api/public/insight'
+import { Route as ApiAdminUsersRouteImport } from './routes/api/admin/users'
+import { Route as ApiAdminSearchesRouteImport } from './routes/api/admin/searches'
+import { Route as ApiAdminAuditLogsRouteImport } from './routes/api/admin/audit-logs'
+import { Route as ApiAdminAnalyticsRouteImport } from './routes/api/admin/analytics'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiUserRoute = ApiUserRouteImport.update({
+  id: '/api/user',
+  path: '/api/user',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSearchRoute = ApiSearchRouteImport.update({
+  id: '/api/search',
+  path: '/api/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiReportRoute = ApiReportRouteImport.update({
+  id: '/api/report',
+  path: '/api/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiFavoriteRoute = ApiFavoriteRouteImport.update({
+  id: '/api/favorite',
+  path: '/api/favorite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiCompareRoute = ApiCompareRouteImport.update({
+  id: '/api/compare',
+  path: '/api/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiWebsiteDomainRoute = ApiWebsiteDomainRouteImport.update({
+  id: '/api/website/$domain',
+  path: '/api/website/$domain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiUserReportsRoute = ApiUserReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => ApiUserRoute,
+} as any)
+const ApiUserHistoryRoute = ApiUserHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => ApiUserRoute,
+} as any)
+const ApiUserFavoritesRoute = ApiUserFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => ApiUserRoute,
+} as any)
+const ApiTimelineDomainRoute = ApiTimelineDomainRouteImport.update({
+  id: '/api/timeline/$domain',
+  path: '/api/timeline/$domain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSnapshotsDomainRoute = ApiSnapshotsDomainRouteImport.update({
+  id: '/api/snapshots/$domain',
+  path: '/api/snapshots/$domain',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicWaybackRoute = ApiPublicWaybackRouteImport.update({
@@ -34,48 +110,181 @@ const ApiPublicInsightRoute = ApiPublicInsightRouteImport.update({
   path: '/api/public/insight',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminUsersRoute = ApiAdminUsersRouteImport.update({
+  id: '/api/admin/users',
+  path: '/api/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminSearchesRoute = ApiAdminSearchesRouteImport.update({
+  id: '/api/admin/searches',
+  path: '/api/admin/searches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAuditLogsRoute = ApiAdminAuditLogsRouteImport.update({
+  id: '/api/admin/audit-logs',
+  path: '/api/admin/audit-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAnalyticsRoute = ApiAdminAnalyticsRouteImport.update({
+  id: '/api/admin/analytics',
+  path: '/api/admin/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/compare': typeof ApiCompareRoute
+  '/api/favorite': typeof ApiFavoriteRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/report': typeof ApiReportRoute
+  '/api/search': typeof ApiSearchRoute
+  '/api/user': typeof ApiUserRouteWithChildren
+  '/api/admin/analytics': typeof ApiAdminAnalyticsRoute
+  '/api/admin/audit-logs': typeof ApiAdminAuditLogsRoute
+  '/api/admin/searches': typeof ApiAdminSearchesRoute
+  '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/public/insight': typeof ApiPublicInsightRoute
   '/api/public/recent': typeof ApiPublicRecentRoute
   '/api/public/wayback': typeof ApiPublicWaybackRoute
+  '/api/snapshots/$domain': typeof ApiSnapshotsDomainRoute
+  '/api/timeline/$domain': typeof ApiTimelineDomainRoute
+  '/api/user/favorites': typeof ApiUserFavoritesRoute
+  '/api/user/history': typeof ApiUserHistoryRoute
+  '/api/user/reports': typeof ApiUserReportsRoute
+  '/api/website/$domain': typeof ApiWebsiteDomainRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/compare': typeof ApiCompareRoute
+  '/api/favorite': typeof ApiFavoriteRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/report': typeof ApiReportRoute
+  '/api/search': typeof ApiSearchRoute
+  '/api/user': typeof ApiUserRouteWithChildren
+  '/api/admin/analytics': typeof ApiAdminAnalyticsRoute
+  '/api/admin/audit-logs': typeof ApiAdminAuditLogsRoute
+  '/api/admin/searches': typeof ApiAdminSearchesRoute
+  '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/public/insight': typeof ApiPublicInsightRoute
   '/api/public/recent': typeof ApiPublicRecentRoute
   '/api/public/wayback': typeof ApiPublicWaybackRoute
+  '/api/snapshots/$domain': typeof ApiSnapshotsDomainRoute
+  '/api/timeline/$domain': typeof ApiTimelineDomainRoute
+  '/api/user/favorites': typeof ApiUserFavoritesRoute
+  '/api/user/history': typeof ApiUserHistoryRoute
+  '/api/user/reports': typeof ApiUserReportsRoute
+  '/api/website/$domain': typeof ApiWebsiteDomainRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/compare': typeof ApiCompareRoute
+  '/api/favorite': typeof ApiFavoriteRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/report': typeof ApiReportRoute
+  '/api/search': typeof ApiSearchRoute
+  '/api/user': typeof ApiUserRouteWithChildren
+  '/api/admin/analytics': typeof ApiAdminAnalyticsRoute
+  '/api/admin/audit-logs': typeof ApiAdminAuditLogsRoute
+  '/api/admin/searches': typeof ApiAdminSearchesRoute
+  '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/public/insight': typeof ApiPublicInsightRoute
   '/api/public/recent': typeof ApiPublicRecentRoute
   '/api/public/wayback': typeof ApiPublicWaybackRoute
+  '/api/snapshots/$domain': typeof ApiSnapshotsDomainRoute
+  '/api/timeline/$domain': typeof ApiTimelineDomainRoute
+  '/api/user/favorites': typeof ApiUserFavoritesRoute
+  '/api/user/history': typeof ApiUserHistoryRoute
+  '/api/user/reports': typeof ApiUserReportsRoute
+  '/api/website/$domain': typeof ApiWebsiteDomainRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api/compare'
+    | '/api/favorite'
+    | '/api/health'
+    | '/api/report'
+    | '/api/search'
+    | '/api/user'
+    | '/api/admin/analytics'
+    | '/api/admin/audit-logs'
+    | '/api/admin/searches'
+    | '/api/admin/users'
     | '/api/public/insight'
     | '/api/public/recent'
     | '/api/public/wayback'
+    | '/api/snapshots/$domain'
+    | '/api/timeline/$domain'
+    | '/api/user/favorites'
+    | '/api/user/history'
+    | '/api/user/reports'
+    | '/api/website/$domain'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/insight' | '/api/public/recent' | '/api/public/wayback'
+  to:
+    | '/'
+    | '/api/compare'
+    | '/api/favorite'
+    | '/api/health'
+    | '/api/report'
+    | '/api/search'
+    | '/api/user'
+    | '/api/admin/analytics'
+    | '/api/admin/audit-logs'
+    | '/api/admin/searches'
+    | '/api/admin/users'
+    | '/api/public/insight'
+    | '/api/public/recent'
+    | '/api/public/wayback'
+    | '/api/snapshots/$domain'
+    | '/api/timeline/$domain'
+    | '/api/user/favorites'
+    | '/api/user/history'
+    | '/api/user/reports'
+    | '/api/website/$domain'
   id:
     | '__root__'
     | '/'
+    | '/api/compare'
+    | '/api/favorite'
+    | '/api/health'
+    | '/api/report'
+    | '/api/search'
+    | '/api/user'
+    | '/api/admin/analytics'
+    | '/api/admin/audit-logs'
+    | '/api/admin/searches'
+    | '/api/admin/users'
     | '/api/public/insight'
     | '/api/public/recent'
     | '/api/public/wayback'
+    | '/api/snapshots/$domain'
+    | '/api/timeline/$domain'
+    | '/api/user/favorites'
+    | '/api/user/history'
+    | '/api/user/reports'
+    | '/api/website/$domain'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiCompareRoute: typeof ApiCompareRoute
+  ApiFavoriteRoute: typeof ApiFavoriteRoute
+  ApiHealthRoute: typeof ApiHealthRoute
+  ApiReportRoute: typeof ApiReportRoute
+  ApiSearchRoute: typeof ApiSearchRoute
+  ApiUserRoute: typeof ApiUserRouteWithChildren
+  ApiAdminAnalyticsRoute: typeof ApiAdminAnalyticsRoute
+  ApiAdminAuditLogsRoute: typeof ApiAdminAuditLogsRoute
+  ApiAdminSearchesRoute: typeof ApiAdminSearchesRoute
+  ApiAdminUsersRoute: typeof ApiAdminUsersRoute
   ApiPublicInsightRoute: typeof ApiPublicInsightRoute
   ApiPublicRecentRoute: typeof ApiPublicRecentRoute
   ApiPublicWaybackRoute: typeof ApiPublicWaybackRoute
+  ApiSnapshotsDomainRoute: typeof ApiSnapshotsDomainRoute
+  ApiTimelineDomainRoute: typeof ApiTimelineDomainRoute
+  ApiWebsiteDomainRoute: typeof ApiWebsiteDomainRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,6 +294,90 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/user': {
+      id: '/api/user'
+      path: '/api/user'
+      fullPath: '/api/user'
+      preLoaderRoute: typeof ApiUserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/search': {
+      id: '/api/search'
+      path: '/api/search'
+      fullPath: '/api/search'
+      preLoaderRoute: typeof ApiSearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/report': {
+      id: '/api/report'
+      path: '/api/report'
+      fullPath: '/api/report'
+      preLoaderRoute: typeof ApiReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/favorite': {
+      id: '/api/favorite'
+      path: '/api/favorite'
+      fullPath: '/api/favorite'
+      preLoaderRoute: typeof ApiFavoriteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/compare': {
+      id: '/api/compare'
+      path: '/api/compare'
+      fullPath: '/api/compare'
+      preLoaderRoute: typeof ApiCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/website/$domain': {
+      id: '/api/website/$domain'
+      path: '/api/website/$domain'
+      fullPath: '/api/website/$domain'
+      preLoaderRoute: typeof ApiWebsiteDomainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/user/reports': {
+      id: '/api/user/reports'
+      path: '/reports'
+      fullPath: '/api/user/reports'
+      preLoaderRoute: typeof ApiUserReportsRouteImport
+      parentRoute: typeof ApiUserRoute
+    }
+    '/api/user/history': {
+      id: '/api/user/history'
+      path: '/history'
+      fullPath: '/api/user/history'
+      preLoaderRoute: typeof ApiUserHistoryRouteImport
+      parentRoute: typeof ApiUserRoute
+    }
+    '/api/user/favorites': {
+      id: '/api/user/favorites'
+      path: '/favorites'
+      fullPath: '/api/user/favorites'
+      preLoaderRoute: typeof ApiUserFavoritesRouteImport
+      parentRoute: typeof ApiUserRoute
+    }
+    '/api/timeline/$domain': {
+      id: '/api/timeline/$domain'
+      path: '/api/timeline/$domain'
+      fullPath: '/api/timeline/$domain'
+      preLoaderRoute: typeof ApiTimelineDomainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/snapshots/$domain': {
+      id: '/api/snapshots/$domain'
+      path: '/api/snapshots/$domain'
+      fullPath: '/api/snapshots/$domain'
+      preLoaderRoute: typeof ApiSnapshotsDomainRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/wayback': {
@@ -108,14 +401,70 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicInsightRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/users': {
+      id: '/api/admin/users'
+      path: '/api/admin/users'
+      fullPath: '/api/admin/users'
+      preLoaderRoute: typeof ApiAdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/searches': {
+      id: '/api/admin/searches'
+      path: '/api/admin/searches'
+      fullPath: '/api/admin/searches'
+      preLoaderRoute: typeof ApiAdminSearchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/audit-logs': {
+      id: '/api/admin/audit-logs'
+      path: '/api/admin/audit-logs'
+      fullPath: '/api/admin/audit-logs'
+      preLoaderRoute: typeof ApiAdminAuditLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/analytics': {
+      id: '/api/admin/analytics'
+      path: '/api/admin/analytics'
+      fullPath: '/api/admin/analytics'
+      preLoaderRoute: typeof ApiAdminAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface ApiUserRouteChildren {
+  ApiUserFavoritesRoute: typeof ApiUserFavoritesRoute
+  ApiUserHistoryRoute: typeof ApiUserHistoryRoute
+  ApiUserReportsRoute: typeof ApiUserReportsRoute
+}
+
+const ApiUserRouteChildren: ApiUserRouteChildren = {
+  ApiUserFavoritesRoute: ApiUserFavoritesRoute,
+  ApiUserHistoryRoute: ApiUserHistoryRoute,
+  ApiUserReportsRoute: ApiUserReportsRoute,
+}
+
+const ApiUserRouteWithChildren =
+  ApiUserRoute._addFileChildren(ApiUserRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiCompareRoute: ApiCompareRoute,
+  ApiFavoriteRoute: ApiFavoriteRoute,
+  ApiHealthRoute: ApiHealthRoute,
+  ApiReportRoute: ApiReportRoute,
+  ApiSearchRoute: ApiSearchRoute,
+  ApiUserRoute: ApiUserRouteWithChildren,
+  ApiAdminAnalyticsRoute: ApiAdminAnalyticsRoute,
+  ApiAdminAuditLogsRoute: ApiAdminAuditLogsRoute,
+  ApiAdminSearchesRoute: ApiAdminSearchesRoute,
+  ApiAdminUsersRoute: ApiAdminUsersRoute,
   ApiPublicInsightRoute: ApiPublicInsightRoute,
   ApiPublicRecentRoute: ApiPublicRecentRoute,
   ApiPublicWaybackRoute: ApiPublicWaybackRoute,
+  ApiSnapshotsDomainRoute: ApiSnapshotsDomainRoute,
+  ApiTimelineDomainRoute: ApiTimelineDomainRoute,
+  ApiWebsiteDomainRoute: ApiWebsiteDomainRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -13,9 +13,15 @@ export function GlowingNavbar() {
       </Link>
 
       <div className="hidden md:flex gap-8 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-        <a href="#explorer" className="hover:text-accent transition-colors">Exploration</a>
-        <a href="#timeline" className="hover:text-accent transition-colors">Timeline</a>
-        <a href="#analysis" className="hover:text-accent transition-colors">Analysis</a>
+        <a href="#explorer" className="hover:text-accent transition-colors">
+          Exploration
+        </a>
+        <a href="#timeline" className="hover:text-accent transition-colors">
+          Timeline
+        </a>
+        <a href="#analysis" className="hover:text-accent transition-colors">
+          Analysis
+        </a>
       </div>
 
       <div className="px-3 py-1.5 rounded-full border border-border text-[10px] font-mono text-muted-foreground">

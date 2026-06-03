@@ -77,7 +77,8 @@ function Index() {
             <div className="text-sm">
               <div className="font-semibold mb-1">Temporal anchor lost</div>
               <div className="text-muted-foreground">
-                Couldn't fetch snapshots for that URL. Try a different one (e.g. apple.com, google.com).
+                Couldn't fetch snapshots for that URL. Try a different one (e.g. apple.com,
+                google.com).
               </div>
             </div>
           </div>
@@ -221,7 +222,9 @@ function RecentPortals({ onSelect }: { onSelect: (domain: string) => void }) {
             </div>
             <div className="text-[10px] font-mono text-muted-foreground mt-2 flex items-center justify-between">
               <span>{item.snapshotsCount} snapshots</span>
-              <span className="opacity-0 group-hover:opacity-100 text-accent transition-opacity">Launch →</span>
+              <span className="opacity-0 group-hover:opacity-100 text-accent transition-opacity">
+                Launch →
+              </span>
             </div>
           </button>
         ))}
@@ -262,7 +265,9 @@ function ErasGallery() {
           >
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-              style={{ background: `radial-gradient(circle at 50% 0%, ${era.color}30, transparent 70%)` }}
+              style={{
+                background: `radial-gradient(circle at 50% 0%, ${era.color}30, transparent 70%)`,
+              }}
             />
             <div className="relative">
               <div

@@ -76,9 +76,7 @@ export function SnapshotViewer({ snapshot, domain }: Props) {
         <div className="font-mono text-[10px] text-accent mb-1 uppercase tracking-wider">
           {domain}
         </div>
-        <div className="text-2xl font-display font-bold leading-tight">
-          {snapshot.year}
-        </div>
+        <div className="text-2xl font-display font-bold leading-tight">{snapshot.year}</div>
         <div className="mt-3 flex items-center gap-2">
           <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-accent/15 text-accent font-bold border border-accent/20">
             {era}

@@ -26,7 +26,7 @@ export function AIInsightPanel({ snapshot, total, index, domain, onCompare }: Pr
       setLoading(true);
       try {
         const res = await fetch(
-          `/api/public/insight?domain=${encodeURIComponent(domain)}&year=${snapshot.year}`
+          `/api/public/insight?domain=${encodeURIComponent(domain)}&year=${snapshot.year}`,
         );
         if (!res.ok) throw new Error("Failed to fetch insight");
         const data = await res.json();
@@ -170,4 +170,3 @@ function Metric({
     </div>
   );
 }
-

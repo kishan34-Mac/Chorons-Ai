@@ -11,7 +11,10 @@ export interface Snapshot {
 
 export function normalizeUrl(input: string): string {
   let u = input.trim().toLowerCase();
-  u = u.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/+$/, "");
+  u = u
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/+$/, "");
   return u;
 }
 
@@ -92,17 +95,41 @@ export function eraBlurb(era: DesignEra): string {
 export function detectShifts(era: string): string[] {
   switch (era) {
     case "Web 1.0":
-      return ["Table-based HTML layouts", "Serif system fonts dominate", "Hit counters & guestbooks", "Sub-800px viewports"];
+      return [
+        "Table-based HTML layouts",
+        "Serif system fonts dominate",
+        "Hit counters & guestbooks",
+        "Sub-800px viewports",
+      ];
     case "Skeuomorphic Era":
-      return ["Gradient & bevel-heavy chrome", "Fixed 960px grids", "JavaScript libraries (jQuery) emerge", "Icon textures mimic real objects"];
+      return [
+        "Gradient & bevel-heavy chrome",
+        "Fixed 960px grids",
+        "JavaScript libraries (jQuery) emerge",
+        "Icon textures mimic real objects",
+      ];
     case "Flat Design Era":
-      return ["Color blocks replace textures", "Responsive breakpoints standardized", "Sans-serif typography systems", "Iconography becomes geometric"];
+      return [
+        "Color blocks replace textures",
+        "Responsive breakpoints standardized",
+        "Sans-serif typography systems",
+        "Iconography becomes geometric",
+      ];
     case "Modern SaaS Era":
-      return ["Generous whitespace & rounded corners", "Subtle gradients return", "Component-driven design systems", "Dark mode becomes default"];
+      return [
+        "Generous whitespace & rounded corners",
+        "Subtle gradients return",
+        "Component-driven design systems",
+        "Dark mode becomes default",
+      ];
     case "AI Native Era":
-      return ["Glassmorphism & ambient depth", "Conversational prompt surfaces", "Motion as primary affordance", "Adaptive typography systems"];
+      return [
+        "Glassmorphism & ambient depth",
+        "Conversational prompt surfaces",
+        "Motion as primary affordance",
+        "Adaptive typography systems",
+      ];
     default:
       return [];
   }
 }
-

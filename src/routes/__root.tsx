@@ -73,10 +73,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Chronos AI — Travel Through Digital Time" },
-      { name: "description", content: "Cinematic AI-powered explorer for the evolution of any website. Paste a URL and travel through decades of web history." },
+      {
+        name: "description",
+        content:
+          "Cinematic AI-powered explorer for the evolution of any website. Paste a URL and travel through decades of web history.",
+      },
       { name: "author", content: "Chronos AI" },
       { property: "og:title", content: "Chronos AI — Travel Through Digital Time" },
-      { property: "og:description", content: "Witness the metamorphosis of the web with cinematic AI reconstruction." },
+      {
+        property: "og:description",
+        content: "Witness the metamorphosis of the web with cinematic AI reconstruction.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -84,7 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

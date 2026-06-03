@@ -43,7 +43,7 @@ export const Route = createFileRoute("/api/public/wayback")({
         }
 
         const api = `https://web.archive.org/cdx/search/cdx?url=${encodeURIComponent(
-          target
+          target,
         )}&output=json&from=1996&to=2025&collapse=timestamp:4&limit=80&filter=statuscode:200&fl=timestamp,original,statuscode`;
 
         let dataRows: string[][] | null = null;
@@ -55,7 +55,8 @@ export const Route = createFileRoute("/api/public/wayback")({
 
           const res = await fetch(api, {
             headers: {
-              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+              "User-Agent":
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             },
             signal: controller.signal,
           });
@@ -65,10 +66,14 @@ export const Route = createFileRoute("/api/public/wayback")({
           if (res.ok) {
             dataRows = await res.json();
           } else {
-            console.warn(`Wayback CDX API returned status ${res.status}. Falling back to synthetic timeline.`);
+            console.warn(
+              `Wayback CDX API returned status ${res.status}. Falling back to synthetic timeline.`,
+            );
           }
         } catch (e) {
-          console.error(`Wayback CDX API error: ${e instanceof Error ? e.message : String(e)}. Falling back to synthetic timeline.`);
+          console.error(
+            `Wayback CDX API error: ${e instanceof Error ? e.message : String(e)}. Falling back to synthetic timeline.`,
+          );
         }
 
         // If fetch failed or returned empty data, use synthetic fallback

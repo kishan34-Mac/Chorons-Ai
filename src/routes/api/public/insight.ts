@@ -32,7 +32,7 @@ export const Route = createFileRoute("/api/public/insight")({
               shifts: defaultShifts,
               isSynthetic: true,
             }),
-            { status: 200, headers: { "Content-Type": "application/json" } }
+            { status: 200, headers: { "Content-Type": "application/json" } },
           );
         }
 
@@ -52,7 +52,7 @@ Do not include markdown code block formatting (like \`\`\`json). Return raw JSON
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${apiKey}`,
+              Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
               model: "gpt-4o-mini",
@@ -67,22 +67,32 @@ Do not include markdown code block formatting (like \`\`\`json). Return raw JSON
 
           if (!response.ok) {
             const errorText = await response.text();
-            console.warn(`OpenAI API returned error ${response.status}: ${errorText}. Using local fallback insights.`);
+            console.warn(
+              `OpenAI API returned error ${response.status}: ${errorText}. Using local fallback insights.`,
+            );
             throw new Error(`OpenAI error: ${response.status}`);
           }
 
           const completion = await response.json();
           const content = completion.choices?.[0]?.message?.content?.trim();
-          
+
           if (!content) {
             throw new Error("Empty response from OpenAI");
           }
 
           // Clean up potential markdown formatting
-          const cleanJson = content.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
+          const cleanJson = content
+            .replace(/^```json\s*/i, "")
+            .replace(/```$/, "")
+            .trim();
           const parsed = JSON.parse(cleanJson);
 
-          if (parsed.era && parsed.blurb && Array.isArray(parsed.shifts) && parsed.shifts.length === 4) {
+          if (
+            parsed.era &&
+            parsed.blurb &&
+            Array.isArray(parsed.shifts) &&
+            parsed.shifts.length === 4
+          ) {
             return new Response(
               JSON.stringify({
                 era: String(parsed.era),
@@ -96,14 +106,16 @@ Do not include markdown code block formatting (like \`\`\`json). Return raw JSON
                   "Content-Type": "application/json",
                   "Cache-Control": "public, max-age=1800", // cache insights for 30 minutes
                 },
-              }
+              },
             );
           } else {
             console.warn("Parsed OpenAI response lacked expected structure:", parsed);
             throw new Error("Invalid response structure");
           }
         } catch (e) {
-          console.error(`Insight generation failed: ${e instanceof Error ? e.message : String(e)}. Using local fallback.`);
+          console.error(
+            `Insight generation failed: ${e instanceof Error ? e.message : String(e)}. Using local fallback.`,
+          );
           return new Response(
             JSON.stringify({
               era: defaultEra,
@@ -111,7 +123,7 @@ Do not include markdown code block formatting (like \`\`\`json). Return raw JSON
               shifts: defaultShifts,
               isSynthetic: true,
             }),
-            { status: 200, headers: { "Content-Type": "application/json" } }
+            { status: 200, headers: { "Content-Type": "application/json" } },
           );
         }
       },

@@ -41,8 +41,7 @@ export function HeroPortal({ onSubmit, loading }: Props) {
         className="font-display font-extrabold tracking-tighter text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.95] text-balance mb-6"
         style={{ animation: "slide-up-reveal 0.8s var(--ease-portal) 0.05s both" }}
       >
-        Travel through{" "}
-        <span className="text-gradient-accent italic font-light">digital time.</span>
+        Travel through <span className="text-gradient-accent italic font-light">digital time.</span>
       </h1>
 
       <p
@@ -60,7 +59,9 @@ export function HeroPortal({ onSubmit, loading }: Props) {
       >
         <div className="absolute inset-0 bg-accent/20 blur-3xl -z-10 opacity-40 rounded-full" />
         <div className="group relative flex items-center p-2 rounded-2xl bg-card/60 border border-border portal-blur focus-within:border-accent/60 focus-within:glow-accent transition-all duration-500">
-          <div className="pl-5 pr-3 font-mono text-muted-foreground/60 text-sm select-none">https://</div>
+          <div className="pl-5 pr-3 font-mono text-muted-foreground/60 text-sm select-none">
+            https://
+          </div>
           <input
             type="text"
             value={value}
@@ -87,7 +88,9 @@ export function HeroPortal({ onSubmit, loading }: Props) {
         </div>
 
         <div className="mt-7 flex flex-wrap justify-center items-center gap-x-5 gap-y-2">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60">Jump to:</span>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60">
+            Jump to:
+          </span>
           {EXAMPLES.map((ex) => (
             <button
               key={ex.label}

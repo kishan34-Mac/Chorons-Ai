@@ -6,7 +6,9 @@ let db: Db | null = null;
 
 async function getDb(): Promise<Db | null> {
   if (!uri) {
-    console.warn("MongoDB connection warning: MONGODB_URI is not defined in environment variables.");
+    console.warn(
+      "MongoDB connection warning: MONGODB_URI is not defined in environment variables.",
+    );
     return null;
   }
 
@@ -46,7 +48,7 @@ export async function saveSearch(domain: string, snapshotsCount: number): Promis
           snapshotsCount,
         },
       },
-      { upsert: true }
+      { upsert: true },
     );
     return true;
   } catch (err) {

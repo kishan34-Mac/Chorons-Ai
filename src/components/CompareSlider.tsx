@@ -48,7 +48,10 @@ export function CompareSlider({ left, right, domain, onClose }: Props) {
           sandbox="allow-scripts allow-same-origin"
         />
         {/* Left (older) clipped */}
-        <div className="absolute inset-0 overflow-hidden" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        >
           <iframe
             src={left.archiveUrl}
             title={`${domain} ${left.year}`}

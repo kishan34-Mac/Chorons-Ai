@@ -3,11 +3,17 @@ export function AmbientFX() {
     <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
       <div
         className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full blur-[140px] opacity-50"
-        style={{ background: "oklch(0.78 0.18 200 / 0.25)", animation: "pulse-glow 10s ease-in-out infinite" }}
+        style={{
+          background: "oklch(0.78 0.18 200 / 0.25)",
+          animation: "pulse-glow 10s ease-in-out infinite",
+        }}
       />
       <div
         className="absolute bottom-[-10%] right-[-5%] w-[55%] h-[55%] rounded-full blur-[140px] opacity-40"
-        style={{ background: "oklch(0.55 0.2 280 / 0.3)", animation: "pulse-glow 14s ease-in-out infinite 1.5s" }}
+        style={{
+          background: "oklch(0.55 0.2 280 / 0.3)",
+          animation: "pulse-glow 14s ease-in-out infinite 1.5s",
+        }}
       />
       {/* grid */}
       <div

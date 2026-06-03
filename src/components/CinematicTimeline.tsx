@@ -33,9 +33,7 @@ export function CinematicTimeline({ snapshots, selectedIndex, onSelect }: Props)
             {first} <span className="text-muted-foreground/40">—</span> {last}
           </div>
         </div>
-        <div className="text-xs font-mono text-muted-foreground">
-          {snapshots.length} snapshots
-        </div>
+        <div className="text-xs font-mono text-muted-foreground">{snapshots.length} snapshots</div>
       </div>
 
       {/* glowing rail */}
@@ -73,7 +71,9 @@ export function CinematicTimeline({ snapshots, selectedIndex, onSelect }: Props)
                   </div>
                   <div
                     className={`font-display font-bold tracking-tight transition-all ${
-                      active ? "text-accent text-lg" : "text-muted-foreground text-sm group-hover:text-foreground"
+                      active
+                        ? "text-accent text-lg"
+                        : "text-muted-foreground text-sm group-hover:text-foreground"
                     }`}
                   >
                     {s.year}
